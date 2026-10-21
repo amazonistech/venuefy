@@ -22,7 +22,7 @@ export default function Header({ variant = "default" }) {
             <div><b>Event Type</b><small>Choose venue type</small></div>
             <Link className="header-search-button" href="/#venue-results" aria-label="Search venues"><i className="bi bi-search" aria-hidden="true" /></Link>
           </div>
-        )}
+        )} 
         <div className="header-actions">
           <Link className="heart-icon fs-5" href="/#venue-results" aria-label="Saved venues"><i className="bi bi-heart" aria-hidden="true" /> Shortlist</Link>
           <Link className="login-btn" href="/#venue-results">SignUp / Login</Link>
