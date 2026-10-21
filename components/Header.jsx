@@ -5,7 +5,8 @@ export default function Header({ variant = "default" }) {
     <header className={`site-header ${variant === "home" ? "home-header" : ""}`}>
       <div className="container header-inner">
         <Link className="brand" href="/">
-          <img src="/images/logo.png" alt="" />
+          {variant === "home" ? <img src="/images/logo.png" alt="" /> :
+            <img src="/images/logo2.png" height={40} alt="" />}
         </Link>
         {variant === "home" ? (
           <nav className="top-nav" aria-label="Main navigation">
@@ -15,14 +16,21 @@ export default function Header({ variant = "default" }) {
           </nav>
         ) : (
           <div className="header-search">
-            <span><i className="bi bi-geo-alt-fill" aria-hidden="true" /></span>
-            <div><b>Where</b><small>Search city, area or venue</small></div>
-            <div><b>Event Date</b><small>Select Date</small></div>
-            <div><b>Guests</b><small>Add guests</small></div>
-            <div><b>Event Type</b><small>Choose venue type</small></div>
-            <Link className="header-search-button" href="/#venue-results" aria-label="Search venues"><i className="bi bi-search" aria-hidden="true" /></Link>
+            <i className="bi bi-geo-alt-fill ms-2" aria-hidden="true" />
+            <div style={{ marginLeft: '-5px' }}><b>Where</b><small>Search city, area or venue</small></div>
+
+            <i className="bi bi-calendar-event ms-2" aria-hidden="true" />
+            <div style={{ marginLeft: '-5px' }}><b>Event Date</b><small>Select Date</small></div>
+
+            <i className="bi bi-people-fill ms-2" aria-hidden="true" />
+            <div style={{ marginLeft: '-5px' }}><b>Guests</b><small>Add guests</small></div>
+
+            <i className="bi bi-grid-fill ms-2" aria-hidden="true" />
+            <div style={{ marginLeft: '-5px' }}><b>Event Type</b><small>Choose venue type</small></div>
+            <Link className="header-search-button" href="/#venue-results" aria-label="Search venues">
+              <i className="bi bi-search search-icon" aria-hidden="true" /></Link>
           </div>
-        )} 
+        )}
         <div className="header-actions">
           <Link className="heart-icon fs-5" href="/#venue-results" aria-label="Saved venues"><i className="bi bi-heart" aria-hidden="true" /> Shortlist</Link>
           <Link className="login-btn" href="/#venue-results">SignUp / Login</Link>

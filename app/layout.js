@@ -11,6 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/x-icon" href="/images/fav.ico"></link>
+      </head>
       <body>
         <ReduxProvider>{children}</ReduxProvider>
       </body>

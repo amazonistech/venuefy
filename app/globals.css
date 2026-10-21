@@ -1622,14 +1622,21 @@ a {
 
 .header-search-button {
   display: inline-flex;
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
   align-items: center;
   justify-content: center;
   background: var(--navy);
   color: #fff;
   font-size: 22px;
+  border-radius: 50%;
+  padding: 20px;
+  margin: auto;
+}
+
+.header-search-button .search-icon{
+  font-size: 15px;
 }
 
 .header-search-button:hover {
