@@ -110,7 +110,10 @@ export default function VenueDetailsClient({ id }) {
                     <h3>Venue Highlights</h3>
                     <div className="feature-row">
                       {venue.highlights.map((item) => (
-                        <span key={item}>◉ {item}</span>
+                        <span key={item}>
+                          <i className="bi bi-check-circle"></i>
+                          {item}
+                        </span>
                       ))}
                     </div>
                   </>
@@ -121,7 +124,8 @@ export default function VenueDetailsClient({ id }) {
                     <div className="amenities-grid">
                       {venue.amenities.map((item) => (
                         <span key={item}>
-                          ◉<small>{item}</small>
+                          <i className="bi bi-check-circle"></i>
+                          <small>{item}</small>
                         </span>
                       ))}
                     </div>
@@ -133,7 +137,8 @@ export default function VenueDetailsClient({ id }) {
                     <div className="amenities-grid policies-grid">
                       {venue.policies.map((item) => (
                         <span key={item}>
-                          ◉<small>{item}</small>
+                          <i className="bi bi-check-circle"></i>
+                          <small>{item}</small>
                         </span>
                       ))}
                     </div>

@@ -16,7 +16,7 @@ body {
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   background: #fff;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 a {
@@ -511,7 +511,7 @@ a {
 }
 
 .breadcrumb-text {
-  font-size: 9px;
+  font-size: 14px;
   color: #777;
   padding: 10px 0;
 }
@@ -523,12 +523,13 @@ a {
 }
 
 .details-heading-row h1 {
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: bold;
   margin: 0;
 }
 
 .rating-line {
-  font-size: 10px;
+  font-size: 14px;
   margin-top: 6px;
   color: #666;
 }
@@ -541,8 +542,9 @@ a {
 .action-links {
   display: flex;
   gap: 15px;
-  font-size: 10px;
+  font-size: 14px;
 }
+
 
 .details-gallery {
   display: grid;
@@ -604,6 +606,11 @@ a {
   border-radius: 8px;
   margin: 8px 0;
   padding: 9px;
+}
+
+.capacity-strip small {
+  font-size: 12px !important;
+  width: 110px;
 }
 
 .capacity-strip>div {
@@ -684,7 +691,7 @@ a {
 }
 
 .feature-row div {
-  font-size: 8px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -1264,13 +1271,14 @@ a {
 
 .info-card h3,
 .things-card h3 {
-  font-size: 12px;
+  font-size: 20px;
   color: #123f75;
   margin: 0 0 8px;
+  font-weight: bold;
 }
 
 .info-card p {
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.55;
   color: #394a5e;
 }
@@ -1285,7 +1293,7 @@ a {
 }
 
 .feature-row span {
-  font-size: 9px;
+  font-size: 12px;
   color: #263d59;
 }
 
@@ -1305,7 +1313,7 @@ a {
 
 .amenities-grid small {
   display: block;
-  font-size: 8px;
+  font-size: 12px;
   color: #344054;
   margin-top: 4px;
 }
@@ -1635,7 +1643,7 @@ a {
   margin: auto;
 }
 
-.header-search-button .search-icon{
+.header-search-button .search-icon {
   font-size: 15px;
 }
 
@@ -2104,16 +2112,14 @@ a {
   min-height: 600px;
   padding: 120px 0 30px;
   color: #fff;
-  background: linear-gradient(
-    to bottom,
-    rgba(21, 63, 102, 0.52) 0%,
-    rgba(53, 100, 140, 0.25) 58%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(21, 63, 102, 0.52) 0%,
+      rgba(53, 100, 140, 0.25) 58%,
+      rgba(255, 255, 255, 0) 100%);
 }
 
 /* The container owns the vertical layout — not .hero-overlay */
-.hero-overlay > .container {
+.hero-overlay>.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2132,7 +2138,7 @@ a {
   font-style: normal;
 }
 
-.hero-overlay > .container > p:not(.search-filter-note) {
+.hero-overlay>.container>p:not(.search-filter-note) {
   margin: 10px 0 28px;
   flex-shrink: 0;
 }
@@ -2178,7 +2184,7 @@ a {
   line-height: 1;
 }
 
-.hero-search-field > span {
+.hero-search-field>span {
   display: block;
   width: 100%;
   min-width: 0;
@@ -2307,6 +2313,7 @@ a {
 
 /* Mobile */
 @media (max-width: 576px) {
+
   .hero,
   .hero-overlay {
     min-height: 600px;
@@ -2320,7 +2327,7 @@ a {
     font-size: 31px;
   }
 
-  .hero-overlay > .container > p:not(.search-filter-note) {
+  .hero-overlay>.container>p:not(.search-filter-note) {
     margin: 10px 0 22px;
     font-size: 12px;
     line-height: 1.45;
@@ -2366,4 +2373,3 @@ a {
     line-height: 1.4;
   }
 }
-
