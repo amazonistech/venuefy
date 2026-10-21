@@ -12,7 +12,7 @@ export default function Header({ variant = "default" }) {
           <nav className="top-nav" aria-label="Main navigation">
             <Link href="/#venue-results">Venues</Link>
             <Link href="/#services">Services</Link>
-            <Link className="active" href="/#venue-results">List &amp; Manage Your Venue <small>Free</small></Link>
+            <Link className="active" href="https://listing.venuefy.in">List &amp; Manage Your Venue <small>Free</small></Link>
           </nav>
         ) : (
           <div className="header-search">

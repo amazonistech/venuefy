@@ -70,7 +70,7 @@ export default function VenueDetailsClient({ id }) {
       <main className="details-page">
         <div className="container">
           <div className="breadcrumb-text">
-            Home › Venues › {venue.location} › {venue.name}
+            Home › Venues › {venue.location} › <strong className="text-dark">{venue.name}</strong>
           </div>
           <div className="details-heading-row">
             <div>
@@ -94,7 +94,7 @@ export default function VenueDetailsClient({ id }) {
                   {venue.stats.map((stat, i) => (
                     <div key={`${stat.label}-${i}`}>
                       <span className="stat-icon">
-                        <i className={`bi ${stat.icon}`} />
+                        <span dangerouslySetInnerHTML={{ __html: stat.icon }} />
                       </span>
                       <b>{stat.value}</b>
                       <small>{stat.label}</small>
@@ -150,8 +150,8 @@ export default function VenueDetailsClient({ id }) {
                     style={
                       venue.vendor.logo
                         ? {
-                            backgroundImage: `url(${getImageUrl(venue.vendor.logo)})`,
-                          }
+                          backgroundImage: `url(${getImageUrl(venue.vendor.logo)})`,
+                        }
                         : undefined
                     }
                   ></div>
