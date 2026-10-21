@@ -5,7 +5,7 @@ export default function Header({ variant = "default" }) {
     <header className={`site-header ${variant === "home" ? "home-header" : ""}`}>
       <div className="container header-inner">
         <Link className="brand" href="/">
-          <img src="/images/logo-navbar.png" height={40} alt="" />
+          <img src="/images/logo.png" alt="" />
         </Link>
         {variant === "home" ? (
           <nav className="top-nav" aria-label="Main navigation">
@@ -24,7 +24,7 @@ export default function Header({ variant = "default" }) {
           </div>
         )}
         <div className="header-actions">
-          <Link className="heart-icon" href="/#venue-results" aria-label="Saved venues"><i className="bi bi-heart" aria-hidden="true" /></Link>
+          <Link className="heart-icon fs-5" href="/#venue-results" aria-label="Saved venues"><i className="bi bi-heart" aria-hidden="true" /> Shortlist</Link>
           <Link className="login-btn" href="/#venue-results">SignUp / Login</Link>
         </div>
       </div>

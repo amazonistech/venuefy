@@ -81,7 +81,7 @@ export default function HeroSearch({
               </span>
             </label>
             <button className="hero-search-submit" type="submit" aria-label="Search venues" title="Search venues">
-              <i className="bi bi-search" aria-hidden="true" />
+              <i className="bi bi-search mt-2" aria-hidden="true" />
             </button>
           </form>
           <datalist id="venue-locations">
@@ -94,7 +94,7 @@ export default function HeroSearch({
               </button>
             ))}
           </div>
-          <p className="search-filter-note">Date and guest count are selectable; results currently filter by venue, location and category supported by the API.</p>
+          {/* <p className="search-filter-note">Date and guest count are selectable; results currently filter by venue, location and category supported by the API.</p> */}
         </div>
       </div>
     </section>

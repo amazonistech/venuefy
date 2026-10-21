@@ -152,17 +152,7 @@ a {
   font-size: 11px;
 }
 
-.hero {
-  min-height: 600px;
-  background: url("/images/banner.jpeg") center/cover;
-}
-
-.hero-overlay {
-  min-height: 455px;
-  background: linear-gradient(#153f66aa, #35648c33 60%, #ffffff00);
-  padding-top: 62px;
-  color: #fff;
-}
+/* Hero styles are consolidated at the end of this file. */
 
 .hero h1 {
   font-size: 39px;
@@ -1926,3 +1916,447 @@ a {
     width: 125px;
   }
 }
+
+
+/* Figma: transparent navbar over the same hero background */
+.site-header.home-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 72px;
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
+  z-index: 100;
+}
+
+.home-header .header-inner {
+  height: 72px;
+  gap: 22px;
+}
+
+.home-header .brand img {
+  display: block;
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+}
+
+.home-header .top-nav {
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.home-header .top-nav a {
+  color: #fff;
+}
+
+.home-header .top-nav .active {
+  background: #0a3c77;
+  color: #fff;
+}
+
+.home-header .top-nav small {
+  background: #f7b21b;
+  color: #10243e;
+}
+
+.home-header .header-actions {
+  color: #fff;
+}
+
+.home-header .heart-icon {
+  color: #fff;
+}
+
+.home-header .login-btn {
+  background: #0a3c77;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+
+  .site-header.home-header,
+  .home-header .header-inner {
+    height: 64px;
+  }
+
+  .home-header .header-inner {
+    gap: 10px;
+  }
+
+  .home-header .brand img {
+    width: 105px;
+  }
+
+  .home-header .top-nav {
+    gap: 0;
+  }
+
+  .home-header .top-nav a {
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .home-header .header-actions {
+    gap: 8px;
+  }
+
+  .home-header .login-btn {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .hero-overlay {
+    padding-top: 105px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+}
+
+
+/* Push hero search and location options toward the bottom */
+.hero {
+  min-height: 600px;
+}
+
+.hero-overlay {
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 18px 28px;
+  text-align: center;
+}
+
+/* Keep the heading and description at the top */
+.hero-overlay h1,
+.hero-overlay>p {
+  flex-shrink: 0;
+}
+
+/* Use available vertical space before the search bar */
+.hero-overlay .hero-search {
+  width: 100%;
+  margin: auto auto 0;
+  flex-shrink: 0;
+}
+
+/* Location options stay below the search bar */
+.hero-overlay .location-pills {
+  width: 100%;
+  margin-top: 12px;
+  flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .hero-overlay {
+    min-height: 600px;
+    padding: 100px 14px 24px;
+  }
+
+  .hero-overlay .hero-search {
+    max-width: 100%;
+  }
+
+  .hero-overlay .location-pills {
+    gap: 6px;
+  }
+
+  .hero-overlay .location-pills button {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   HOME HERO — consolidated layout
+   Keep heading near the top; search controls below it.
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 600px;
+  background-image: url("/images/banner.jpeg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 0;
+}
+
+.hero-overlay {
+  min-height: 600px;
+  padding: 120px 0 30px;
+  color: #fff;
+  background: linear-gradient(
+    to bottom,
+    rgba(21, 63, 102, 0.52) 0%,
+    rgba(53, 100, 140, 0.25) 58%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* The container owns the vertical layout — not .hero-overlay */
+.hero-overlay > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-overlay h1 {
+  margin: 0;
+  font-size: 39px;
+  line-height: 1.05;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.hero-overlay h1 em {
+  color: #f5b51f;
+  font-style: normal;
+}
+
+.hero-overlay > .container > p:not(.search-filter-note) {
+  margin: 10px 0 28px;
+  flex-shrink: 0;
+}
+
+.hero-search {
+  width: 100%;
+  max-width: 980px;
+  min-height: 76px;
+  margin: 0 auto;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  border-radius: 18px;
+  background: #fff;
+  color: #182b42;
+  text-align: left;
+  box-shadow: 0 6px 20px #0003;
+}
+
+.hero-search .hero-search-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 8px 12px;
+  flex: 1 1 0;
+  border-right: 1px solid #e2e6eb;
+  text-align: left;
+}
+
+.hero-search .hero-location-field {
+  flex: 1.45 1 0;
+}
+
+.hero-search .event-type-field {
+  border-right: 0;
+}
+
+.search-field-icon {
+  flex: 0 0 auto;
+  color: #0b3b78;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.hero-search-field > span {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-search .hero-search-field b {
+  display: block;
+  margin-bottom: 3px;
+  color: #18314f;
+  font-size: 12px;
+}
+
+.hero-search .hero-search-field input,
+.hero-search .hero-search-field select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-top: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #45566d;
+  font-size: 11px;
+}
+
+.hero-search .hero-search-field input::placeholder {
+  color: #777;
+}
+
+.hero-search .hero-search-field input[type="date"] {
+  min-height: 17px;
+}
+
+.hero-search select {
+  appearance: auto;
+}
+
+.hero-search .hero-search-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+  margin-left: 3px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 25px;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.hero-search .hero-search-submit:hover {
+  background: #13539b;
+  transform: translateY(-1px);
+}
+
+.location-pills {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.location-pills button {
+  padding: 8px 14px;
+  border: 1px solid #ffffff55;
+  border-radius: 20px;
+  background: #0c3f79dd;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.location-pills button .bi {
+  margin-right: 3px;
+  font-size: 14px;
+}
+
+.search-filter-note {
+  margin: 9px 0 0 !important;
+  color: #fff;
+  font-size: 10px;
+  opacity: .88;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero-overlay {
+    min-height: 600px;
+    padding-top: 112px;
+  }
+
+  .hero-search {
+    max-width: 760px;
+    flex-wrap: wrap;
+    border-radius: 16px;
+  }
+
+  .hero-search .hero-search-field {
+    flex-basis: 40%;
+    border-bottom: 1px solid #e2e6eb;
+  }
+
+  .hero-search .event-type-field {
+    border-right: 1px solid #e2e6eb;
+  }
+
+  .hero-search .hero-search-submit {
+    flex: 1 0 100%;
+    width: 100%;
+    height: 45px;
+    min-width: 100%;
+    margin: 4px 0 0;
+    border-radius: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .hero,
+  .hero-overlay {
+    min-height: 600px;
+  }
+
+  .hero-overlay {
+    padding: 96px 0 24px;
+  }
+
+  .hero h1 {
+    font-size: 31px;
+  }
+
+  .hero-overlay > .container > p:not(.search-filter-note) {
+    margin: 10px 0 22px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .hero-search {
+    max-width: 100%;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 15px;
+  }
+
+  .hero-search .hero-search-field {
+    min-width: 0;
+    padding: 9px 7px;
+    flex-basis: 100%;
+    border-right: 0;
+  }
+
+  .hero-search .hero-search-field:not(:last-of-type) {
+    border-bottom: 1px solid #e2e6eb;
+  }
+
+  .hero-search .hero-search-submit {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 100%;
+    height: 44px;
+    margin: 8px 0 0;
+  }
+
+  .location-pills {
+    gap: 6px;
+  }
+
+  .location-pills button {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .search-filter-note {
+    line-height: 1.4;
+  }
+}
+

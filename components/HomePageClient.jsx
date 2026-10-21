@@ -138,7 +138,7 @@ export default function HomePageClient() {
               </button>
               {venueCategories.map((item) => (
                 <button className={`outline-chip ${category === item._id ? "active-chip" : ""}`} type="button" key={item._id} onClick={() => handleVenueCategory(item._id)}>
-                  {item.name}
+                  <span dangerouslySetInnerHTML={{ __html: item.icon }} /> {item.name}
                 </button>
               ))}
               {categoryLoading && <span className="small-muted">Loading venue categories...</span>}
