@@ -15,6 +15,7 @@ async function parseResponse(response) {
   try {
     data = await response.json();
   } catch (error) {
+    console.log(error)
     data = {};
   }
 
