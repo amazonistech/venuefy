@@ -11,6 +11,14 @@
   box-sizing: border-box;
 }
 
+.bg-gold {
+  background-color: var(--gold);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
 body {
   margin: 0;
   color: var(--text);
@@ -222,7 +230,7 @@ a {
 
 .section-title-row h2,
 .city-section h2 {
-  font-size: 18px;
+  font-size: 18px !important;
   margin: 0;
   color: #0d3a72;
 }
@@ -500,7 +508,7 @@ a {
   border-top: 1px solid #c79425;
   margin-top: 16px;
   padding-top: 10px;
-  font-size: 8px;
+  font-size: 12px;
   color: #d5deea;
   display: flex;
   justify-content: space-between;
@@ -727,7 +735,7 @@ a {
   display: block;
 }
 
-.details-sidebar {
+g-details .details-sidebar {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -738,23 +746,23 @@ a {
 }
 
 .booking-card>small {
-  font-size: 9px;
+  font-size: 14px;
   color: #777;
 }
 
 .booking-card h2 {
-  font-size: 20px;
+  font-size: 25px;
   margin: 0;
   color: #123e76;
 }
 
 .booking-card h2 small {
-  font-size: 8px;
+  font-size: 11px;
   color: #777;
 }
 
 .booking-card p {
-  font-size: 7px;
+  font-size: 10px;
   color: #777;
 }
 
@@ -770,7 +778,7 @@ a {
   border: 0;
   background: #fff;
   padding: 7px;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .booking-tabs button:first-child {
@@ -789,7 +797,7 @@ a {
   border: 1px solid #eee;
   border-radius: 7px;
   padding: 7px;
-  font-size: 8px;
+  font-size: 12px;
 }
 
 .booking-fields small {
@@ -807,14 +815,14 @@ a {
 
 .booking-details>b {
   display: block;
-  font-size: 9px;
+  font-size: 18px;
   margin-bottom: 6px;
 }
 
 .booking-details small {
   display: flex;
   justify-content: space-between;
-  font-size: 7px;
+  font-size: 12px;
   padding: 3px 0;
 }
 
@@ -825,7 +833,7 @@ a {
   border-radius: 18px;
   padding: 9px;
   margin-top: 7px;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -879,12 +887,12 @@ a {
 }
 
 .managed-card strong {
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .managed-card small,
 .managed-card b {
-  font-size: 7px;
+  font-size: 12px;
   color: #777;
   margin-top: 3px;
 }
@@ -896,12 +904,13 @@ a {
   gap: 5px;
 }
 
-.manager-actions button {
-  border: 1px solid #d7dfe8;
+.manager-actions button,
+.manager-actions a {
+  border: 1px solid navy;
   background: #fff;
   border-radius: 15px;
   padding: 7px;
-  font-size: 8px;
+  font-size: 12px;
 }
 
 .manager-actions button:last-child {
@@ -913,8 +922,9 @@ a {
 }
 
 .things-card h3 {
-  font-size: 11px;
+  font-size: 16px !important;
   color: #123e76;
+  text-align: center;
 }
 
 .things-card div {
@@ -926,7 +936,7 @@ a {
 
 .things-card strong,
 .things-card span {
-  font-size: 7px;
+  font-size: 12px;
 }
 
 .reviews-card {
@@ -1272,6 +1282,7 @@ a {
 .info-card h3,
 .things-card h3 {
   font-size: 20px;
+  font-weight: bold;
   color: #123f75;
   margin: 0 0 8px;
   font-weight: bold;
@@ -1352,11 +1363,39 @@ a {
   border-bottom: 1px solid #eee;
   padding: 8px 0;
   margin: 0;
-  font-size: 9px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .things-card p:last-child {
   border: 0;
+}
+
+.rules-div {
+  background-color: #e7faef;
+}
+
+.rules-div p {
+  font-size: 14px;
+}
+
+.bullet-check,
+.bullet-check2 {
+  height: 40px;
+  width: 40px;
+  background-color: green;
+  border-radius: 50%;
+  padding: 10px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bullet-check2 {
+  height: 25px;
+  width: 25px;
+  padding: 5px;
 }
 
 .similar-section {
@@ -1903,13 +1942,14 @@ a {
 
 .app-store-badges {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   margin-top: 12px;
 }
 
 .app-store-badges a {
+  width: 48%;
   display: inline-flex;
   align-items: center;
   transition: opacity 0.2s ease;
@@ -1920,9 +1960,8 @@ a {
 }
 
 .app-store-badges img {
-  display: block;
   width: 145px;
-  height: auto;
+  height: 100px;
   max-width: 100%;
 }
 

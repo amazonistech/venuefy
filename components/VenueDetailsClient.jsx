@@ -13,6 +13,7 @@ import BookingCard from "./BookingCard";
 import Footer from "./Footer";
 import VenueCard from "./VenueCard";
 import { getImageUrl } from "../lib/venueMapper";
+import Link from "next/link";
 
 export default function VenueDetailsClient({ id }) {
   const dispatch = useDispatch();
@@ -148,6 +149,20 @@ export default function VenueDetailsClient({ id }) {
             </div>
             <aside>
               <BookingCard price={venue.price} />
+
+              <div className="booking-card my-3 border-success border-3 rules-div">
+                <h5><span className="bullet-check me-4"><i className="bi bi-shield-check text-light"></i></span> Why pay on Venuefy</h5>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Official Venuefy booking confirmation</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Whatsapp confirmation from venue owner</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Booking and payment record saved</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Secure advance payment</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Transparent advance & remaining balance</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Verified venue partnerers</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Direct venue coordination</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Dedicated booking support</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Cancellation/refund support as per policy</p>
+                <p className="text-dark"><span className="bullet-check2 me-4"><i className="bi bi-check text-light fs-5"></i></span> Easy venue visit scheduling</p>
+              </div>
               {venue.vendor && (
                 <section className="managed-card">
                   <div
@@ -168,14 +183,15 @@ export default function VenueDetailsClient({ id }) {
                       {venue.vendor.businessType || "Venue Partner"}
                     </small>
                     <b>
-                      {venue.vendor.businessPhone ||
-                        venue.vendor.businessEmail ||
+                      {venue.vendor?.businessPhone ||
+                        venue.vendor?.businessEmail ||
                         "Contact details available on request"}
                     </b>
                   </div>
                   <div className="manager-actions">
-                    <button type="button">Contact</button>
-                    <button type="button">View Profile</button>
+                    <Link href={`tel:${venue.vendor?.businessPhone}`} className="text-center"><i className="bi bi-telephone me-2"></i> Call</Link>
+                    <Link href={`https://wa.me/${venue.vendor?.businessPhone}`} className="text-center"><i className="bi bi-whatsapp me-2 text-success"></i>Whatsapp</Link>
+                    <button type="button"><i className="bi bi-telephone me-2"></i> Request Callback</button>
                   </div>
                 </section>
               )}
@@ -207,7 +223,7 @@ export default function VenueDetailsClient({ id }) {
           {similar.length > 0 && (
             <section className="similar-section">
               <div className="section-title-row">
-                <h2>📍 Similar Venues Nearby</h2>
+                <h2><i className="bi bi-geo-alt-fill text-gold fs-5"></i> Similar Venues Nearby</h2>
               </div>
               <div className="venue-grid">
                 {similar.map((item) => (

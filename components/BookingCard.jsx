@@ -7,19 +7,23 @@ export default function BookingCard({ price = 0 }) {
       </h2>
       <p>Final pricing may vary based on menu, decor, taxes, and inclusions.</p>
       <div className="booking-tabs">
-        <button type="button">Book Event　▣</button>
+        <button type="button">Book Event　 <i className="bi bi-calendar-event"></i></button>
         <button type="button">Schedule a Visit</button>
       </div>
       <div className="booking-fields">
         <div>
-          Event Date<small>Select date　▣</small>
+          Event Date<small>Select date
+            <i className="bi bi-calendar-event"></i>
+          </small>
         </div>
         <div>
-          Guest<small>Select Guest　♙</small>
+          Guest<small>Select Guest
+            <i className="ms-2 bi bi-people"></i>
+          </small>
         </div>
       </div>
       <div className="booking-details">
-        <b>◇ Venue Pricing</b>
+        <b><i className="bi bi-tag"></i> Venue Pricing</b>
         <small>
           Starting Price{" "}
           <strong>₹ {Number(price).toLocaleString("en-IN")}</strong>
@@ -29,11 +33,12 @@ export default function BookingCard({ price = 0 }) {
         </small>
       </div>
       <button className="pay-btn" type="button">
-        Request Availability →
+        Pay Advance & Confirm Booking
+        <i className="bi bi-arrow-right"></i>
       </button>
       <small className="booking-note">
-        Booking functionality will be connected when the booking API is
-        available.
+        <i className="bi bi-stopwatch me-2"></i>
+        Your Date Will Be Tentatively Held For 24 Hours
       </small>
     </div>
   );
