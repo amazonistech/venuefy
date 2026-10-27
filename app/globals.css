@@ -1150,10 +1150,6 @@ g-details .details-sidebar {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .venue-grid .venue-card:last-child {
-    display: none;
-  }
-
   .city-card {
     height: 145px;
   }
