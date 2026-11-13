@@ -3,7 +3,8 @@ import { GET_SERVICE, GET_SERVICE_RED, SERVICE_API_ERROR } from "../Constant";
 import { getPublicRecord } from "./APICallingService";
 
 function getReason(data = {}) {
-  if (typeof data.reason === "object" && data.reason) return Object.values(data.reason).join(", ");
+  if (typeof data.reason === "object" && data.reason)
+    return Object.values(data.reason).join(", ");
   return data.reason || data.message || "Unable to load services.";
 }
 

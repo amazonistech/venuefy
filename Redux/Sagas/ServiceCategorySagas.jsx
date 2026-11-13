@@ -7,7 +7,8 @@ import {
 import { getPublicRecord } from "./APICallingService";
 
 function getReason(data = {}) {
-  if (typeof data.reason === "object" && data.reason) return Object.values(data.reason).join(", ");
+  if (typeof data.reason === "object" && data.reason)
+    return Object.values(data.reason).join(", ");
   return data.reason || data.message || "Unable to load service categories.";
 }
 
@@ -15,7 +16,10 @@ function* getServiceCategorySaga(action) {
   const query = action.payload?.query || "limit=100";
   const response = yield getPublicRecord("service-categories/public", query);
   if (!response?.response?.ok || response?.data?.result === "Fail") {
-    yield put({ type: SERVICE_CATEGORY_API_ERROR, payload: getReason(response?.data) });
+    yield put({
+      type: SERVICE_CATEGORY_API_ERROR,
+      payload: getReason(response?.data),
+    });
     return;
   }
   const data = response?.data?.data || {};

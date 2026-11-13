@@ -15,7 +15,7 @@ async function parseResponse(response) {
   try {
     data = await response.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
     data = {};
   }
 
@@ -260,24 +260,29 @@ export async function authRecord(path, payload, method = "POST") {
   }
 }
 
-
 export async function getPublicRecord(collection, query = "") {
   try {
     const backendUrl = getBackendUrl();
     if (!backendUrl) {
       throw new Error("NEXT_PUBLIC_BACKEND_SERVER is not configured.");
     }
-    const response = await fetch(`${backendUrl}/${collection}${query ? `?${query}` : ""}`, {
-      method: "GET",
-      credentials: "omit",
-      cache: "no-store",
-      headers: { Accept: "application/json" },
-    });
+    const response = await fetch(
+      `${backendUrl}/${collection}${query ? `?${query}` : ""}`,
+      {
+        method: "GET",
+        credentials: "omit",
+        cache: "no-store",
+        headers: { Accept: "application/json" },
+      },
+    );
     return parseResponse(response);
   } catch (error) {
     return {
       response: { ok: false, status: 0 },
-      data: { result: "Fail", message: error?.message || "Unable to connect to the API." },
+      data: {
+        result: "Fail",
+        message: error?.message || "Unable to connect to the API.",
+      },
     };
   }
 }

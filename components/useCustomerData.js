@@ -12,11 +12,21 @@ export default function useCustomerData(path) {
     if (!path) return;
     const controller = new AbortController();
     customerApi(path, { signal: controller.signal }).then(
-      (data) => { if (!controller.signal.aborted) setResult({ path, userId, revision, data }); },
-      (error) => { if (!controller.signal.aborted) setResult({ path, userId, revision, error }); },
+      (data) => {
+        if (!controller.signal.aborted)
+          setResult({ path, userId, revision, data });
+      },
+      (error) => {
+        if (!controller.signal.aborted)
+          setResult({ path, userId, revision, error });
+      },
     );
     return () => controller.abort();
   }, [path, userId, revision]);
   const current = result.path === path && result.userId === userId;
-  return { ...(current ? result : {}), loading: Boolean(path) && (!current || result.revision !== revision), reload: () => setRevision((value) => value + 1) };
+  return {
+    ...(current ? result : {}),
+    loading: Boolean(path) && (!current || result.revision !== revision),
+    reload: () => setRevision((value) => value + 1),
+  };
 }

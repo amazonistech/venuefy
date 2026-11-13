@@ -8,11 +8,19 @@ const event = "venuefy:session";
 let refreshing;
 
 function read() {
-  try { return sessionStorage.getItem(key) || ""; } catch { return ""; }
+  try {
+    return sessionStorage.getItem(key) || "";
+  } catch {
+    return "";
+  }
 }
 
 function getSession() {
-  try { return JSON.parse(read() || "null"); } catch { return null; }
+  try {
+    return JSON.parse(read() || "null");
+  } catch {
+    return null;
+  }
 }
 
 export function setSession(value) {
@@ -28,7 +36,11 @@ function subscribe(callback) {
 
 export function useCustomer() {
   const raw = useSyncExternalStore(subscribe, read, () => "");
-  try { return JSON.parse(raw || "null")?.user || null; } catch { return null; }
+  try {
+    return JSON.parse(raw || "null")?.user || null;
+  } catch {
+    return null;
+  }
 }
 
 export async function customerApi(path, options) {
@@ -39,19 +51,35 @@ export async function customerApi(path, options) {
   } catch (error) {
     if (error.status !== 401 || options?.signal?.aborted) throw error;
     const current = getSession();
-    if (!current || (current.user?.id || current.user?._id) !== (session.user?.id || session.user?._id)) throw error;
-    if (current.accessToken !== session.accessToken) return publicApi(path, { ...options, token: current.accessToken });
+    if (
+      !current ||
+      (current.user?.id || current.user?._id) !==
+        (session.user?.id || session.user?._id)
+    )
+      throw error;
+    if (current.accessToken !== session.accessToken)
+      return publicApi(path, { ...options, token: current.accessToken });
     const refreshToken = current.refreshToken;
     if (refreshing?.token !== refreshToken) {
       const job = { token: refreshToken };
-      job.promise = publicApi("/auth/refresh-token", { body: { refreshToken } }).then((next) => {
-        if (getSession()?.refreshToken !== refreshToken) throw new Error("Sign in to continue.");
-        setSession({ ...current, ...next });
-        return next.accessToken;
-      }).catch((failure) => {
-        if ([401, 403, 404].includes(failure.status) && getSession()?.refreshToken === refreshToken) setSession(null);
-        throw failure;
-      }).finally(() => { if (refreshing === job) refreshing = null; });
+      job.promise = publicApi("/auth/refresh-token", { body: { refreshToken } })
+        .then((next) => {
+          if (getSession()?.refreshToken !== refreshToken)
+            throw new Error("Sign in to continue.");
+          setSession({ ...current, ...next });
+          return next.accessToken;
+        })
+        .catch((failure) => {
+          if (
+            [401, 403, 404].includes(failure.status) &&
+            getSession()?.refreshToken === refreshToken
+          )
+            setSession(null);
+          throw failure;
+        })
+        .finally(() => {
+          if (refreshing === job) refreshing = null;
+        });
       refreshing = job;
     }
     return publicApi(path, { ...options, token: await refreshing.promise });
@@ -65,5 +93,9 @@ export async function logout() {
 }
 
 export function nextPath(value, fallback = "/bookings") {
-  return typeof value === "string" && /^\/(?![\\/])/.test(value) && !/[\\\x00-\x1f]/.test(value) ? value : fallback;
+  return typeof value === "string" &&
+    /^\/(?![\\/])/.test(value) &&
+    !/[\\\x00-\x1f]/.test(value)
+    ? value
+    : fallback;
 }

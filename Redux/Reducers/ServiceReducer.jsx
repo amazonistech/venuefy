@@ -20,7 +20,11 @@ export default function ServiceReducer(state = initialState, action) {
         error: "",
       };
     case SERVICE_API_ERROR:
-      return { ...state, loading: false, error: action.payload || "Unable to load services." };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload || "Unable to load services.",
+      };
     default:
       return state;
   }

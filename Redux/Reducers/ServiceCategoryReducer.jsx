@@ -24,7 +24,11 @@ export default function ServiceCategoryReducer(state = initialState, action) {
         error: "",
       };
     case SERVICE_CATEGORY_API_ERROR:
-      return { ...state, loading: false, error: action.payload || "Unable to load service categories." };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload || "Unable to load service categories.",
+      };
     default:
       return state;
   }

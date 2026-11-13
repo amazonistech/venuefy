@@ -4,5 +4,10 @@ import VenueCategorySagas from "./VenueCategorySagas";
 import ServiceSagas from "./ServiceSagas";
 import ServiceCategorySagas from "./ServiceCategorySagas";
 export default function* RootSaga() {
-  yield all([VenueSagas(), VenueCategorySagas(), ServiceSagas(), ServiceCategorySagas()]);
+  yield all([
+    VenueSagas(),
+    VenueCategorySagas(),
+    ServiceSagas(),
+    ServiceCategorySagas(),
+  ]);
 }

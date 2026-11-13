@@ -7,23 +7,31 @@ export default function BookingCard({ price = 0 }) {
       </h2>
       <p>Final pricing may vary based on menu, decor, taxes, and inclusions.</p>
       <div className="booking-tabs">
-        <button type="button">Book Event　 <i className="bi bi-calendar-event"></i></button>
+        <button type="button">
+          Book Event　 <i className="bi bi-calendar-event"></i>
+        </button>
         <button type="button">Schedule a Visit</button>
       </div>
       <div className="booking-fields">
         <div>
-          Event Date<small>Select date
+          Event Date
+          <small>
+            Select date
             <i className="bi bi-calendar-event"></i>
           </small>
         </div>
         <div>
-          Guest<small>Select Guest
+          Guest
+          <small>
+            Select Guest
             <i className="ms-2 bi bi-people"></i>
           </small>
         </div>
       </div>
       <div className="booking-details">
-        <b><i className="bi bi-tag"></i> Venue Pricing</b>
+        <b>
+          <i className="bi bi-tag"></i> Venue Pricing
+        </b>
         <small>
           Starting Price{" "}
           <strong>₹ {Number(price).toLocaleString("en-IN")}</strong>
