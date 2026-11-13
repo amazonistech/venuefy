@@ -7,15 +7,15 @@ export default function ServiceSection({ services = [], categories = [], selecte
       <div className="section-title-row">
         <div>
           <h2>Wedding Services</h2>
-          <p>Explore services listed by Venufy partners</p>
+          <p>Explore services listed by Venuefy partners</p>
         </div>
-        <Link href="/#services">Explore services <i className="bi bi-arrow-right" aria-hidden="true" /></Link>
+        <Link href="/services">Explore services <i className="bi bi-arrow-right" aria-hidden="true" /></Link>
       </div>
       {categories.length > 0 && (
         <div className="service-category-chips" aria-label="Filter services by category">
-          <button type="button" className={!selectedCategory ? "active" : ""} onClick={() => onCategoryChange("")}>All services</button>
+          <button type="button" className={!selectedCategory ? "active" : ""} aria-pressed={!selectedCategory} onClick={() => onCategoryChange("")}>All services</button>
           {categories.map((category) => (
-            <button type="button" key={category._id} className={selectedCategory === category._id ? "active" : ""} onClick={() => onCategoryChange(category._id)}>
+            <button type="button" key={category._id} className={selectedCategory === category._id ? "active" : ""} aria-pressed={selectedCategory === category._id} onClick={() => onCategoryChange(category._id)}>
               {category.name}
             </button>
           ))}

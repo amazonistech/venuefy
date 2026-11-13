@@ -1,150 +1,46 @@
 import Link from "next/link";
+import { company } from "../lib/company";
+import { partnerPortal, hrefWith } from "../lib/publicApi";
 
-const footerSections = [
-  {
-    title: "Find Venues",
-    items: [
-      ["Wedding Venue", "/venues/wedding-venue"],
-      ["Banquet Halls", "/venues/banquet-halls"],
-      ["Farmhouses", "/venues/farmhouses"],
-      ["Wedding Lawns", "/venues/wedding-lawns"],
-      ["Hotels", "/venues/hotels"],
-      ["Resorts", "/venues/resorts"],
-      ["Party Venue", "/venues/party-venues"],
-    ],
-  },
-  {
-    title: "Popular Locations",
-    items: [
-      ["Wedding Venue in Delhi", "/venues/delhi"],
-      ["Wedding Venue in Gurgaon", "/venues/gurgaon"],
-      ["Wedding Venue in Noida", "/venues/noida"],
-      ["Wedding Venue in Chattarpur", "/venues/chattarpur"],
-      ["Wedding Venue in Dwarka", "/venues/dwarka"],
-      ["Wedding Venue in Rohini", "/venues/rohini"],
-      ["Wedding Venue in Mayur Vihar", "/venues/mayur-vihar"],
-    ],
-  },
-  {
-    title: "For Venue Owners",
-    items: [
-      ["List Your Venue", "/list-your-venue"],
-      ["Manage Your Venue", "/venue-owner/dashboard"],
-      ["Partner Login", "/login"],
-      ["Free Venue Management Tools", "/venue-management-tools"],
-      ["Venue Owner Support", "/contact-us"],
-    ],
-  },
-  {
-    title: "Company & Legal",
-    items: [
-      ["About Us", "/about-us"],
-      ["Contact Us", "/contact-us"],
-      ["Terms & Conditions", "/terms-and-conditions"],
-      ["Refund Policy", "/refund-policy"],
-      ["Cancellation & Refund Policy", "/cancellation-refund-policy"],
-      ["Privacy Policy", "/privacy-policy"],
-      ["Cookies Policy", "/cookie-policy"],
-    ],
-  },
+const places = ["Delhi", "Noida", "Gurugram", "Goa", "Jaipur", "Mumbai", "Pune", "Bengaluru", "Hyderabad", "Udaipur", "Chandigarh", "Shimla"];
+const venueTypes = ["Banquet halls", "Wedding lawns", "Farmhouses", "Hotels", "Resorts", "Party venues"];
+const legal = [
+  ["About Us", "/about-us"], ["Contact Us", "/contact-us"], ["Company Details", "/company-details"],
+  ["Terms & Conditions", "/terms-and-conditions"], ["Privacy Policy", "/privacy-policy"],
+  ["Cancellation & Refund Policy", "/cancellation-refund-policy"], ["Refund Policy", "/refund-policy"], ["Cookies Policy", "/cookie-policy"],
+];
+const socials = [
+  ["Instagram", "instagram", "https://instagram.com/venuefy.in"],
+  ["Facebook", "facebook", "https://facebook.com/venuefy.in"],
+  ["YouTube", "youtube", "https://youtube.com/@venuefy"],
+  ["LinkedIn", "linkedin", "https://linkedin.com/company/venuefy-official"],
+  ["WhatsApp", "whatsapp", "https://wa.me/918796955210"],
 ];
 
-export default function Footer() {
-  return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-links">
-          <div className="footer-brand">
-            <Link href="/" className="footer-logo">
-            <img src="/images/logo-footer.png" height={80} alt="" />
-            </Link>
-            <p>Discover and book verified venues for<br />weddings, parties, corporate events<br />and more across India.</p>
-            <b>Follow Us</b>
-            <div className="socials">
-              <a href="https://facebook.com/venuefy.in" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <i className="bi bi-facebook me-2"></i>
-              </a>
-              <a href="https://linkedin.com/company/venuefy-official" target="_blank" rel="noopener noreferrer" aria-label="Linkedin">
-                <i className="bi bi-linkedin me-2"></i>
-              </a>
-              <a href="https://x.com/venuefyofficial" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <i className="bi bi-twitter me-2"></i>
-              </a>
-              <a href="https://instagram.com/venuefy.in" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <i className="bi bi-instagram me-2"></i>
-              </a>
-              <a href="https://threads.com/@venuefy.in" target="_blank" rel="noopener noreferrer" aria-label="Thread">
-                <i className="bi bi-threads me-2"></i>
-              </a>
-              <a href="https://youtube.com/@venuefy" target="_blank" rel="noopener noreferrer" aria-label="Youtube">
-                <i className="bi bi-youtube me-2"></i>
-              </a>
-              <a href="https://in.pinterest.com/Venuefy" target="_blank" rel="noopener noreferrer" aria-label="PintRest">
-                <i className="bi bi-pintrest me-2"></i>
-              </a>
-              <a href="https://wa.me/+918796955210" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp">
-                <i className="bi bi-whatsapp me-2"></i>
-              </a>
-
-            </div>
-            <small>Coming Soon — Download the Venufy App</small>
-            <div className="app-store-badges">
-              <a
-                href="https://apps.apple.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Download on the App Store"
-              >
-                <img
-                  src="/images/app-store-badge.svg"
-                  alt="Download on the App Store"
-                />
-              </a>
-
-              <a
-                href="https://play.google.com/store"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Get it on Google Play"
-              >
-                <img
-                  src="/images/google-play-badge.png"
-                  alt="Get it on Google Play"
-                />
-              </a>
-            </div>
-          </div>
-
-          {footerSections.map((section) => (
-            <FooterCol key={section.title} title={section.title} items={section.items} />
-          ))}
-        </div>
-
-        <div className="footer-bottom">
-          <div>© {new Date().getFullYear()} Venufy™ · All Rights Reserved. Owned &amp; operated by Amazonis IT Services Pvt. Ltd.</div>
-          <span className="footer-bottom-legal">
-            <Link href="/privacy-policy">Privacy</Link>
-            <span> · </span>
-            <Link href="/terms-and-conditions">Terms</Link>
-            <span> · </span>
-            <Link href="/sitemap.xml">Sitemap</Link>
-            <span> · </span>
-            <Link href="/company-details">Company Details</Link>
-            <span> · 🇮🇳 English (IN)</span>
-          </span>
+export default function Footer({ locations = [] }) {
+  const cities = locations.length ? locations : places.map((name) => ({ name, href: hrefWith("/venues", { city: name }) }));
+  return <footer className="footer vf-footer"><div className="container">
+    <section className="footer-explore">
+      <h2>Explore popular venues and locations</h2>
+      <div className="footer-top-links"><Link href="/venues">Popular</Link><Link href="/venues?eventType=wedding">Wedding venues</Link><Link href="/venues?eventType=corporate">Corporate events</Link><Link href="/services">Event services</Link></div>
+      <div className="footer-city-grid">{cities.slice(0, 18).map(({ name, href }) => <Link key={name} href={href}>{name}<small>Explore venues</small></Link>)}</div>
+    </section>
+    <div className="footer-links">
+      <div className="footer-brand">
+        <Link href="/"><img src="/images/logo-footer.png" height={74} alt="Venuefy" /></Link>
+        <p>Discover venues and event services for celebrations across India.</p>
+        <div className="socials">{socials.map(([title, icon, href]) => <a key={title} href={href} aria-label={title} target="_blank" rel="noreferrer"><i className={`bi bi-${icon}`} /></a>)}</div>
+        <a href={`mailto:${company.support}`}>{company.support}</a>
+        <small>Venuefy app coming soon</small>
+        <div className="app-badges">
+          <a href="https://apps.apple.com/" target="_blank" rel="noreferrer"><img src="/images/app-store-badge.svg" alt="App Store" /></a>
+          <a href="https://play.google.com/store" target="_blank" rel="noreferrer"><img src="/images/google-play-badge.png" alt="Google Play" /></a>
         </div>
       </div>
-    </footer>
-  );
-}
-
-function FooterCol({ title, items }) {
-  return (
-    <div className="footer-col">
-      <h3>{title}</h3>
-      {items.map(([label, href]) => (
-        <Link href={href} key={label}>{label}</Link>
-      ))}
+      <div className="footer-col"><h3>Find venues</h3><Link href="/venues?eventType=wedding">Wedding venues</Link>{venueTypes.map((item) => <Link href={hrefWith("/venues", { type: item })} key={item}>{item}</Link>)}</div>
+      <div className="footer-col"><h3>For venue owners</h3><a href={partnerPortal}>List your venue</a><a href={partnerPortal}>Manage your venue</a><a href={partnerPortal}>Partner login</a><Link href="/contact-us">Venue owner support</Link></div>
+      <div className="footer-col"><h3>Company &amp; legal</h3>{legal.map(([text, href]) => <Link href={href} key={href}>{text}</Link>)}</div>
     </div>
-  );
+    <div className="footer-bottom"><span>© {new Date().getFullYear()} Venuefy™. Owned and operated by <a href={company.url}>{company.name}</a></span><span><Link href="/privacy-policy">Privacy</Link> · <Link href="/terms-and-conditions">Terms</Link> · English (IN)</span></div>
+  </div></footer>;
 }
